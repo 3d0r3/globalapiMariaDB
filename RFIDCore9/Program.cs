@@ -5,33 +5,6 @@ using System.Text;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
-static void Main()
-{
-    string token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJHbG9iYWxETVMiLCJqdGkiOiI4ZjYxYmFjNy1lZWE5LTQwNzItOGIwOC1jZjZhMTJmZDhiMDkiLCJpYXQiOiIyMS8wMi8yMDI1IDAzOjEyOjE3IiwiVVNVQVJJTyI6IlNIQU5HNzAiLCJFTVBSRVNBSUQiOiIxIiwiQUdFTkNJQUlEIjoiMSIsImV4cCI6MTc0MDE5MzkzN30.vaBVMpM1fT5YwFPesljr_Fi7UQIMmFRZ5mvVLvyFqUo";
-    string secretKey = "GlobalDms@llavesupersercretanoselacompartasanadie";
-
-    var tokenHandler = new JwtSecurityTokenHandler();
-    var key = Encoding.UTF8.GetBytes(secretKey);
-
-    var validationParams = new TokenValidationParameters
-    {
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(key),
-        ValidateIssuer = false, // Habilítalos si necesitas validar el issuer
-        ValidateAudience = false, // Habilítalos si necesitas validar la audiencia
-        ValidateLifetime = false
-    };
-
-    try
-    {
-        var principal = tokenHandler.ValidateToken(token, validationParams, out SecurityToken validatedToken);
-        Console.WriteLine("✅ Token firmado correctamente.");
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"❌ Token inválido: {ex.Message}");
-    }
-}
 
 // 🔹 1️⃣ Configurar JWT desde appsettings.json
 var jwtSettings = builder.Configuration.GetSection("Jwt");
@@ -68,7 +41,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "globaldmsweb", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "globalapiMariaDB", Version = "v1" });
 
     var securityScheme = new OpenApiSecurityScheme
     {
@@ -120,17 +93,4 @@ app.UseSwaggerUI();
 
 // 🔹 🔟 Asignar controladores y ejecutar la aplicación
 app.MapControllers();
-app.Use(async (context, next) =>
-{
-    try
-    {
-        await next();
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"❌ ERROR: {ex.Message}");
-        Console.WriteLine($"🛠 StackTrace: {ex.StackTrace}");
-        throw;
-    }
-});
 app.Run();
