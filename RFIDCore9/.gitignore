@@ -1,0 +1,70 @@
+# Archivos de Rider y JetBrains
+.idea/
+*.sln.iml
+*.sln.DotSettings.user
+
+# Archivos binarios y compilados
+bin/
+obj/
+out/
+
+# Archivos de configuración de usuario
+*.user
+*.suo
+*.vsp
+*.vspx
+*.vssscc
+*.ncb
+*.cache
+*.csproj.user
+
+# Archivos de configuración de Rider
+*.sln.DotSettings
+*.dotCover
+.idea/
+
+# Configuraciones específicas de Visual Studio
+.vscode/
+*.suo
+.ntvs
+*.njsproj
+*.sln.docstates
+
+# Logs y archivos temporales
+*.log
+logs/
+temp/
+*.tmp
+*.bak
+*.swp
+Thumbs.db
+ehthumbs.db
+
+# Archivos de configuración y secretos
+appsettings.json
+appsettings.Development.json
+secrets.json
+
+# Archivos de dependencias de NuGet
+*.nupkg
+packages/
+project.lock.json
+project.assets.json
+
+# Archivos de configuración de Entity Framework
+Migrations/
+
+# Publicaciones y despliegues
+publish/
+wwwroot/
+dist/
+node_modules/
+
+# Cache de Git
+*.orig
+
+# Archivos específicos de Rider
+.idea/
+*.iml
+*.ipr
+*.iws

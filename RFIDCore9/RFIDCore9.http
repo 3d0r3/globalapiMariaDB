@@ -1,0 +1,6 @@
+@RFIDCore9_HostAddress = http://localhost:5298
+
+GET {{RFIDCore9_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
